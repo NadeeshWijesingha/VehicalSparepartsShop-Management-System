@@ -1,0 +1,79 @@
+create database spareparts_shop;
+use spareparts_shop;
+
+create table admin
+(
+	username varchar(30) not null
+		primary key,
+	password varchar(30) null
+)
+charset=latin1;
+
+create table category
+(
+	categoryId varchar(10) not null
+		primary key,
+	description varchar(60) null
+)
+charset=latin1;
+
+create table customer
+(
+	customerId varchar(10) not null
+		primary key,
+	name varchar(60) null,
+	contact varchar(15) null
+)
+charset=latin1;
+
+create table item
+(
+	itemId varchar(10) not null
+		primary key,
+	categoryId varchar(10) null,
+	brand varchar(20) null,
+	description varchar(60) null,
+	qtyOnHand int null,
+	buyPrice decimal(8,2) null,
+	unitPrice decimal(8,2) null,
+	constraint fk_categoryId
+		foreign key (categoryId) references category (categoryId)
+)
+charset=latin1;
+
+create table orders
+(
+	orderId varchar(10) not null
+		primary key,
+	date date null,
+	customerId varchar(10) null,
+	constraint fk_customerId
+		foreign key (customerId) references customer (customerId)
+)
+charset=latin1;
+
+create table delivery
+(
+	deliveryId varchar(10) not null,
+	orderId varchar(10) not null,
+	address varchar(256) null,
+	states varchar(20) null,
+	primary key (deliveryId, orderId),
+	constraint fk_orderIdForDelivery
+		foreign key (orderId) references orders (orderId)
+)
+charset=latin1;
+
+create table orderdetail
+(
+	orderId varchar(10) not null,
+	itemId varchar(10) not null,
+	qty int null,
+	unitPrice decimal(8,2) null,
+	primary key (orderId, itemId),
+	constraint fk_itemId
+		foreign key (itemId) references item (itemId),
+	constraint fk_orderId2
+		foreign key (orderId) references orders (orderId)
+)
+charset=latin1;
