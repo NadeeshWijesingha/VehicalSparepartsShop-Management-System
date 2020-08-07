@@ -1,15 +1,22 @@
 package controller;
 
+import java.io.IOException;
+import java.net.URL;
+
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
 
 import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 public class OrderController {
 
@@ -31,7 +38,14 @@ public class OrderController {
   public JFXComboBox comboItem;
   public JFXButton btnSave;
 
-  public void btnHome_OnAction(MouseEvent mouseEvent) {
+  public void btnHome_OnAction(MouseEvent mouseEvent) throws IOException {
+    URL resource;
+    resource = this.getClass().getResource("/view/MainForm.fxml");
+    Parent root = FXMLLoader.load(resource);
+    Scene scene = new Scene(root);
+    Stage primaryStage = (Stage) (this.root.getScene().getWindow());
+    primaryStage.setScene(scene);
+    primaryStage.centerOnScreen();
   }
 
   public void btnNew_OnAction(ActionEvent actionEvent) {
