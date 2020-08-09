@@ -1,5 +1,5 @@
 package entity;
 
-public class Category {
+public class Category implements SuperEntity {
 
 }

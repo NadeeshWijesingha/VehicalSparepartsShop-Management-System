@@ -4,4 +4,6 @@ import dao.CrudDAO;
 
 public interface OrdersDAO extends CrudDAO {
 
+  String getLastOrderId();
+
 }

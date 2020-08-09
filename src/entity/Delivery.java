@@ -1,5 +1,5 @@
 package entity;
 
-public class Delivery {
+public class Delivery implements SuperEntity {
 
 }

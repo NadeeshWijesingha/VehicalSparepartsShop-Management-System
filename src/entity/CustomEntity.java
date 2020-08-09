@@ -1,5 +1,5 @@
 package entity;
 
-public class CustomEntity {
+public class CustomEntity implements SuperEntity {
 
 }

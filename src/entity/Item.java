@@ -1,5 +1,5 @@
 package entity;
 
-public class Item {
+public class Item implements SuperEntity {
 
 }
