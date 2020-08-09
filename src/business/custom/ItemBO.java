@@ -1,5 +1,20 @@
 package business.custom;
 
-public interface ItemBO {
+import java.util.List;
+
+import business.SuperBO;
+import util.ItemTM;
+
+public interface ItemBO extends SuperBO {
+
+  boolean saveItem(String itemId, String categoryId, String description, int qtyOnHand, double buyPrice, double unitPrice) throws Exception;
+
+  boolean updateItem(String categoryId, String description, int qtyOnHand, double buyPrice, double unitPrice, String itemId) throws Exception;
+
+  boolean deleteItem(String itemId) throws Exception;
+
+  List <ItemTM> findAllItem() throws Exception;
+
+  String getNewItemId() throws Exception;
 
 }
