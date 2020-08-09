@@ -1,4 +1,7 @@
 package dao;
 
 public enum DAOType {
+
+  CATEGORY, CUSTOMER, DELIVERY, ITEM, ORDERS, ORDER_DETAIL, QUERY
+
 }
