@@ -7,6 +7,9 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
 
+import business.BOFactory;
+import business.BOType;
+import business.custom.ItemBO;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -36,15 +39,7 @@ public class ItemController {
   public JFXButton btnSave;
   public JFXComboBox comboCategory;
 
-  public void btnHome_OnAction(MouseEvent mouseEvent) throws IOException {
-    URL resource;
-    resource = this.getClass().getResource("/view/MainForm.fxml");
-    Parent root = FXMLLoader.load(resource);
-    Scene scene = new Scene(root);
-    Stage primaryStage = (Stage) (this.root.getScene().getWindow());
-    primaryStage.setScene(scene);
-    primaryStage.centerOnScreen();
-  }
+  ItemBO itemBO = BOFactory.getInstance().getBO(BOType.ITEM);
 
   public void btnNew_OnAction(ActionEvent actionEvent) {
   }
@@ -53,5 +48,15 @@ public class ItemController {
   }
 
   public void btnDelete_OnAction(ActionEvent actionEvent) {
+  }
+
+  public void btnHome_OnAction(MouseEvent mouseEvent) throws IOException {
+    URL resource;
+    resource = this.getClass().getResource("/view/MainForm.fxml");
+    Parent root = FXMLLoader.load(resource);
+    Scene scene = new Scene(root);
+    Stage primaryStage = (Stage) (this.root.getScene().getWindow());
+    primaryStage.setScene(scene);
+    primaryStage.centerOnScreen();
   }
 }

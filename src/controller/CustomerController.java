@@ -6,6 +6,9 @@ import java.net.URL;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 
+import business.BOFactory;
+import business.BOType;
+import business.custom.CustomerBO;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -29,15 +32,7 @@ public class CustomerController {
   public JFXButton btnSave;
   public AnchorPane root;
 
-  public void btnHome_OnAction(MouseEvent mouseEvent) throws IOException {
-    URL resource;
-    resource = this.getClass().getResource("/view/MainForm.fxml");
-    Parent root = FXMLLoader.load(resource);
-    Scene scene = new Scene(root);
-    Stage primaryStage = (Stage) (this.root.getScene().getWindow());
-    primaryStage.setScene(scene);
-    primaryStage.centerOnScreen();
-  }
+  CustomerBO customerBO = BOFactory.getInstance().getBO(BOType.CUSTOMER);
 
   public void btnSave_OnAction(ActionEvent actionEvent) {
   }
@@ -46,5 +41,15 @@ public class CustomerController {
   }
 
   public void btnNew_OnAction(ActionEvent actionEvent) {
+  }
+
+  public void btnHome_OnAction(MouseEvent mouseEvent) throws IOException {
+    URL resource;
+    resource = this.getClass().getResource("/view/MainForm.fxml");
+    Parent root = FXMLLoader.load(resource);
+    Scene scene = new Scene(root);
+    Stage primaryStage = (Stage) (this.root.getScene().getWindow());
+    primaryStage.setScene(scene);
+    primaryStage.centerOnScreen();
   }
 }

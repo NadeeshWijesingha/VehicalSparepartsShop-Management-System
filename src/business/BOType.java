@@ -2,6 +2,6 @@ package business;
 
 public enum BOType {
 
-  CUSTOMER, ITEM, ORDER;
+  CUSTOMER, ITEM, DELIVERY, ORDER;
 
 }
