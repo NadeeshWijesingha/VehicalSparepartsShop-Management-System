@@ -3,9 +3,14 @@ package business.custom.impl;
 import java.util.List;
 
 import business.custom.CustomerBO;
+import dao.DAOFactory;
+import dao.DAOType;
+import dao.custom.CustomerDAO;
 import util.CustomerTM;
 
 public class CustomerBOImpl implements CustomerBO {
+
+  CustomerDAO customerDAO = DAOFactory.getInstance().getDAO(DAOType.CUSTOMER);
 
   @Override
   public boolean saveCustomer(String id, String name, String contact) throws Exception {
@@ -29,6 +34,26 @@ public class CustomerBOImpl implements CustomerBO {
 
   @Override
   public String getNewCustomerId() throws Exception {
-    return null;
+    String lastCustomerId = null;
+    try {
+      lastCustomerId = customerDAO.getLastCustomerId();
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+    if (lastCustomerId == null) {
+      return "C001";
+    } else {
+      int maxId = Integer.parseInt(lastCustomerId.replace("C", ""));
+      maxId = maxId + 1;
+      String id = "";
+      if (maxId < 10) {
+        id = "C00" + maxId;
+      } else if (maxId < 100) {
+        id = "C0" + maxId;
+      } else {
+        id = "C" + maxId;
+      }
+      return id;
+    }
   }
 }
