@@ -31,18 +31,16 @@
       <TableView fx:id="tblItem" layoutX="14.0" layoutY="333.0" prefHeight="253.0" prefWidth="769.0">
         <columns>
           <TableColumn fx:id="clmId" prefWidth="56.0" text="Id" />
-          <TableColumn fx:id="clmCategory" prefWidth="123.0" text="Category" />
-            <TableColumn fx:id="clmBrand" prefWidth="126.0" text="Brand" />
-            <TableColumn fx:id="clmDescription" prefWidth="166.0" text="Description" />
-            <TableColumn fx:id="clmQtyOnHand" prefWidth="115.0" text="Qty On Hand" />
-            <TableColumn fx:id="clmBuy" prefWidth="84.0" text="Buy" />
-            <TableColumn fx:id="clmSell" prefWidth="98.0" text="Sell" />
+          <TableColumn fx:id="clmCategory" prefWidth="141.0" text="Category" />
+            <TableColumn fx:id="clmDescription" prefWidth="252.0" text="Description" />
+            <TableColumn fx:id="clmQtyOnHand" prefWidth="108.0" text="Qty On Hand" />
+            <TableColumn fx:id="clmBuy" prefWidth="101.0" text="Buy" />
+            <TableColumn fx:id="clmSell" prefWidth="110.0" text="Sell" />
         </columns>
       </TableView>
       <JFXTextField fx:id="txtId" labelFloat="true" layoutX="34.0" layoutY="75.0" prefHeight="31.0" prefWidth="287.0" promptText="Id" />
-      <JFXTextField fx:id="txtBrand" labelFloat="true" layoutX="34.0" layoutY="155.0" prefHeight="31.0" prefWidth="287.0" promptText="Brand" />
       <JFXTextField fx:id="txtQtyOnHand" labelFloat="true" layoutX="34.0" layoutY="235.0" prefHeight="31.0" prefWidth="219.0" promptText="Add QtyOnHand" />
-      <JFXTextField fx:id="txtDescription" labelFloat="true" layoutX="499.0" layoutY="155.0" prefHeight="31.0" prefWidth="287.0" promptText="Description" />
+      <JFXTextField fx:id="txtDescription" labelFloat="true" layoutX="32.0" layoutY="155.0" prefHeight="31.0" prefWidth="754.0" promptText="Description" />
       <JFXTextField fx:id="txtBuy" labelFloat="true" layoutX="289.0" layoutY="235.0" prefHeight="31.0" prefWidth="219.0" promptText="Buy" />
       <JFXTextField fx:id="txtSell" labelFloat="true" layoutX="564.0" layoutY="235.0" prefHeight="31.0" prefWidth="219.0" promptText="Sell" />
       <JFXButton layoutX="667.0" layoutY="17.0" onAction="#btnNew_OnAction" style="-fx-background-color: #5DFF41;" text="New" />

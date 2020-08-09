@@ -21,7 +21,7 @@ public class CustomerController {
   public TableView tblCustomer;
   public TableColumn clmId;
   public TableColumn clmName;
-  public TableColumn clmAddress;
+  public TableColumn clmContact;
   public JFXTextField txtId;
   public JFXTextField txtName;
   public JFXTextField txtAddress;

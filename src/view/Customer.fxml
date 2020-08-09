@@ -30,7 +30,7 @@
         <columns>
           <TableColumn fx:id="clmId" prefWidth="97.0" text="ID" />
           <TableColumn fx:id="clmName" prefWidth="381.0" text="Name" />
-            <TableColumn fx:id="clmAddress" prefWidth="290.0" text="Contact" />
+            <TableColumn fx:id="clmContact" prefWidth="290.0" text="Contact" />
         </columns>
       </TableView>
       <JFXTextField fx:id="txtId" labelFloat="true" layoutX="14.0" layoutY="117.0" prefHeight="31.0" prefWidth="573.0" promptText="Enter ID" />

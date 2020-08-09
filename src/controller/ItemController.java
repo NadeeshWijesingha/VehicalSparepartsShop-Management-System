@@ -23,14 +23,12 @@ public class ItemController {
   public TableView tblItem;
   public TableColumn clmId;
   public TableColumn clmCategory;
-  public TableColumn clmBrand;
   public TableColumn clmDescription;
-  public TableColumn clmQty;
+  public TableColumn clmQtyOnHand;
   public TableColumn clmBuy;
   public TableColumn clmSell;
   public JFXTextField txtId;
-  public JFXTextField txtBrand;
-  public JFXTextField txtQty;
+  public JFXTextField txtQtyOnHand;
   public JFXTextField txtDescription;
   public JFXTextField txtBuy;
   public JFXTextField txtSell;
