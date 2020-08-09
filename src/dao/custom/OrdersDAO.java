@@ -1,9 +1,10 @@
 package dao.custom;
 
 import dao.CrudDAO;
+import entity.Orders;
 
-public interface OrdersDAO extends CrudDAO {
+public interface OrdersDAO extends CrudDAO <Orders, String> {
 
-  String getLastOrderId();
+  String getLastOrderId() throws Exception;
 
 }

@@ -6,6 +6,6 @@ import entity.DeliveryPK;
 
 public interface DeliveryDAO extends CrudDAO <Delivery, DeliveryPK> {
 
-  String getLastDeliveryId();
+  String getLastDeliveryId() throws Exception;
 
 }
