@@ -16,11 +16,12 @@ import javafx.scene.control.TableView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import util.DeliveryTM;
 
 public class DeliveryController {
 
   public AnchorPane root;
-  public TableView tblDelivery;
+  public TableView <DeliveryTM> tblDelivery;
   public TableColumn clmDeliveryId;
   public TableColumn clmOrderId;
   public TableColumn clmAddress;

@@ -16,11 +16,12 @@ import javafx.scene.control.TableView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import util.ItemTM;
 
 public class ItemController {
 
   public AnchorPane root;
-  public TableView tblItem;
+  public TableView <ItemTM> tblItem;
   public TableColumn clmId;
   public TableColumn clmCategory;
   public TableColumn clmDescription;

@@ -15,10 +15,11 @@ import javafx.scene.control.TableView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import util.CustomerTM;
 
 public class CustomerController {
 
-  public TableView tblCustomer;
+  public TableView <CustomerTM> tblCustomer;
   public TableColumn clmId;
   public TableColumn clmName;
   public TableColumn clmContact;

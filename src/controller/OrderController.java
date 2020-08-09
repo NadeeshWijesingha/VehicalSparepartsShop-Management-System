@@ -17,11 +17,12 @@ import javafx.scene.control.TableView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import util.OrderTM;
 
 public class OrderController {
 
   public AnchorPane root;
-  public TableView tblOrder;
+  public TableView <OrderTM> tblOrder;
   public TableColumn clmOrderId;
   public TableColumn clmItemId;
   public TableColumn clmDescription;
