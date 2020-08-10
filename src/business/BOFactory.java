@@ -1,7 +1,9 @@
 package business;
 
 import business.custom.impl.CustomerBOImpl;
+import business.custom.impl.DeliveryBOImpl;
 import business.custom.impl.ItemBOImpl;
+import business.custom.impl.OrdersBOImpl;
 import dao.custom.impl.DeliveryDAOImpl;
 import dao.custom.impl.OrdersDAOImpl;
 
@@ -23,9 +25,9 @@ public class BOFactory {
       case ITEM:
         return (T) new ItemBOImpl();
       case DELIVERY:
-        return (T) new DeliveryDAOImpl();
+        return (T) new DeliveryBOImpl();
       case ORDER:
-        return (T) new OrdersDAOImpl();
+        return (T) new OrdersBOImpl();
       default:
         return null;
     }

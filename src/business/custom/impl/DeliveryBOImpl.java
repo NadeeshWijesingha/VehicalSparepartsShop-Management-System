@@ -33,11 +33,6 @@ public class DeliveryBOImpl implements DeliveryBO {
   }
 
   @Override
-  public List<String> getOrderIdList() throws Exception {
-    return null;
-  }
-
-  @Override
   public String getNewDeliveryId() throws Exception {
     String lastDeliveryId = null;
     try {

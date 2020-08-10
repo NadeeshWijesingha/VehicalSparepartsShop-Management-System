@@ -17,6 +17,4 @@ public interface DeliveryBO extends SuperBO {
 
   String getNewDeliveryId() throws Exception;
 
-  List <String> getOrderIdList() throws Exception;
-
 }
