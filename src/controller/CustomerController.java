@@ -15,6 +15,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -33,6 +34,14 @@ public class CustomerController {
   public AnchorPane root;
 
   CustomerBO customerBO = BOFactory.getInstance().getBO(BOType.CUSTOMER);
+
+  public void initialize(){
+
+    tblCustomer.getColumns().get(0).setCellValueFactory(new PropertyValueFactory<>("id"));
+    tblCustomer.getColumns().get(0).setCellValueFactory(new PropertyValueFactory<>("name"));
+    tblCustomer.getColumns().get(0).setCellValueFactory(new PropertyValueFactory<>("contact"));
+
+  }
 
   public void btnSave_OnAction(ActionEvent actionEvent) {
   }

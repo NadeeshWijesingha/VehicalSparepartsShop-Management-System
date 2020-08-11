@@ -19,6 +19,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -47,6 +48,16 @@ public class OrderController {
   OrdersDAO ordersDAO = DAOFactory.getInstance().getDAO(DAOType.ORDERS);
   OrderDetailDAO orderDetailDAO = DAOFactory.getInstance().getDAO(DAOType.ORDER_DETAIL);
   ItemDAO itemDAO =DAOFactory.getInstance().getDAO(DAOType.ITEM);
+
+  public void initialize(){
+
+    tblOrder.getColumns().get(0).setCellValueFactory(new PropertyValueFactory<>("itemId"));
+    tblOrder.getColumns().get(0).setCellValueFactory(new PropertyValueFactory<>("description"));
+    tblOrder.getColumns().get(0).setCellValueFactory(new PropertyValueFactory<>("qty"));
+    tblOrder.getColumns().get(0).setCellValueFactory(new PropertyValueFactory<>("unitPrice"));
+    tblOrder.getColumns().get(0).setCellValueFactory(new PropertyValueFactory<>("total"));
+
+  }
 
   public void btnNew_OnAction(ActionEvent actionEvent) {
   }

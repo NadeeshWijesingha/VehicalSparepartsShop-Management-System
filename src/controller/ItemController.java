@@ -16,6 +16,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -40,6 +41,17 @@ public class ItemController {
   public JFXComboBox comboCategory;
 
   ItemBO itemBO = BOFactory.getInstance().getBO(BOType.ITEM);
+
+  public void initialize(){
+
+    tblItem.getColumns().get(0).setCellValueFactory(new PropertyValueFactory<>("itemId"));
+    tblItem.getColumns().get(0).setCellValueFactory(new PropertyValueFactory<>("categoryId"));
+    tblItem.getColumns().get(0).setCellValueFactory(new PropertyValueFactory<>("description"));
+    tblItem.getColumns().get(0).setCellValueFactory(new PropertyValueFactory<>("qtyOnHand"));
+    tblItem.getColumns().get(0).setCellValueFactory(new PropertyValueFactory<>("buyPrice"));
+    tblItem.getColumns().get(0).setCellValueFactory(new PropertyValueFactory<>("sellPrice"));
+
+  }
 
   public void btnNew_OnAction(ActionEvent actionEvent) {
   }

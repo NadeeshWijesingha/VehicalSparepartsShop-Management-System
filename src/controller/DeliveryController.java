@@ -17,6 +17,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -38,6 +39,15 @@ public class DeliveryController {
 
   DeliveryBO deliveryBO = BOFactory.getInstance().getBO(BOType.DELIVERY);
   OrdersBO ordersBO = BOFactory.getInstance().getBO(BOType.ORDER);
+
+  public void initialize(){
+
+    tblDelivery.getColumns().get(0).setCellValueFactory(new PropertyValueFactory<>("deliveryId"));
+    tblDelivery.getColumns().get(0).setCellValueFactory(new PropertyValueFactory<>("orderId"));
+    tblDelivery.getColumns().get(0).setCellValueFactory(new PropertyValueFactory<>("address"));
+    tblDelivery.getColumns().get(0).setCellValueFactory(new PropertyValueFactory<>("status"));
+
+  }
 
   public void btnSave_OnAction(ActionEvent actionEvent) {
   }
