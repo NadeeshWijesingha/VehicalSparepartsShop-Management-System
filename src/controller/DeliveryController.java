@@ -43,9 +43,9 @@ public class DeliveryController {
   public void initialize(){
 
     tblDelivery.getColumns().get(0).setCellValueFactory(new PropertyValueFactory<>("deliveryId"));
-    tblDelivery.getColumns().get(0).setCellValueFactory(new PropertyValueFactory<>("orderId"));
-    tblDelivery.getColumns().get(0).setCellValueFactory(new PropertyValueFactory<>("address"));
-    tblDelivery.getColumns().get(0).setCellValueFactory(new PropertyValueFactory<>("status"));
+    tblDelivery.getColumns().get(1).setCellValueFactory(new PropertyValueFactory<>("orderId"));
+    tblDelivery.getColumns().get(2).setCellValueFactory(new PropertyValueFactory<>("address"));
+    tblDelivery.getColumns().get(3).setCellValueFactory(new PropertyValueFactory<>("status"));
 
   }
 

@@ -52,10 +52,10 @@ public class OrderController {
   public void initialize(){
 
     tblOrder.getColumns().get(0).setCellValueFactory(new PropertyValueFactory<>("itemId"));
-    tblOrder.getColumns().get(0).setCellValueFactory(new PropertyValueFactory<>("description"));
-    tblOrder.getColumns().get(0).setCellValueFactory(new PropertyValueFactory<>("qty"));
-    tblOrder.getColumns().get(0).setCellValueFactory(new PropertyValueFactory<>("unitPrice"));
-    tblOrder.getColumns().get(0).setCellValueFactory(new PropertyValueFactory<>("total"));
+    tblOrder.getColumns().get(1).setCellValueFactory(new PropertyValueFactory<>("description"));
+    tblOrder.getColumns().get(2).setCellValueFactory(new PropertyValueFactory<>("qty"));
+    tblOrder.getColumns().get(3).setCellValueFactory(new PropertyValueFactory<>("unitPrice"));
+    tblOrder.getColumns().get(4).setCellValueFactory(new PropertyValueFactory<>("total"));
 
   }
 

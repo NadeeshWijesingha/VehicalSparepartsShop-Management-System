@@ -45,11 +45,11 @@ public class ItemController {
   public void initialize(){
 
     tblItem.getColumns().get(0).setCellValueFactory(new PropertyValueFactory<>("itemId"));
-    tblItem.getColumns().get(0).setCellValueFactory(new PropertyValueFactory<>("categoryId"));
-    tblItem.getColumns().get(0).setCellValueFactory(new PropertyValueFactory<>("description"));
-    tblItem.getColumns().get(0).setCellValueFactory(new PropertyValueFactory<>("qtyOnHand"));
-    tblItem.getColumns().get(0).setCellValueFactory(new PropertyValueFactory<>("buyPrice"));
-    tblItem.getColumns().get(0).setCellValueFactory(new PropertyValueFactory<>("sellPrice"));
+    tblItem.getColumns().get(1).setCellValueFactory(new PropertyValueFactory<>("categoryId"));
+    tblItem.getColumns().get(2).setCellValueFactory(new PropertyValueFactory<>("description"));
+    tblItem.getColumns().get(3).setCellValueFactory(new PropertyValueFactory<>("qtyOnHand"));
+    tblItem.getColumns().get(4).setCellValueFactory(new PropertyValueFactory<>("buyPrice"));
+    tblItem.getColumns().get(5).setCellValueFactory(new PropertyValueFactory<>("sellPrice"));
 
   }
 

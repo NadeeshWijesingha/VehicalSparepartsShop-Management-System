@@ -35,9 +35,9 @@
       </TableView>
       <JFXTextField fx:id="txtId" labelFloat="true" layoutX="14.0" layoutY="117.0" prefHeight="31.0" prefWidth="573.0" promptText="Enter ID" />
       <JFXTextField fx:id="txtName" labelFloat="true" layoutX="14.0" layoutY="190.0" prefHeight="31.0" prefWidth="573.0" promptText="Enter Name" />
-      <JFXTextField fx:id="txtAddress" labelFloat="true" layoutX="14.0" layoutY="263.0" prefHeight="31.0" prefWidth="573.0" promptText="Enter Address" />
+      <JFXTextField fx:id="txtContact" labelFloat="true" layoutX="14.0" layoutY="263.0" prefHeight="31.0" prefWidth="573.0" promptText="Enter Contact" />
       <JFXButton fx:id="btnSave" layoutX="645.0" layoutY="175.0" onAction="#btnSave_OnAction" prefHeight="31.0" prefWidth="141.0" style="-fx-background-color: #5D63FC;" text="Save" />
-      <JFXButton layoutX="645.0" layoutY="248.0" onAction="#btnDelete_OnAction" prefHeight="31.0" prefWidth="141.0" style="-fx-background-color: #FF2727;" text="Delete" />
+      <JFXButton fx:id="btnDelete" layoutX="645.0" layoutY="248.0" onAction="#btnDelete_OnAction" prefHeight="31.0" prefWidth="141.0" style="-fx-background-color: #FF2727;" text="Delete" />
       <JFXButton layoutX="587.0" layoutY="17.0" onAction="#btnNew_OnAction" style="-fx-background-color: #5DFF41;" text="New" />
    </children>
 </AnchorPane>
