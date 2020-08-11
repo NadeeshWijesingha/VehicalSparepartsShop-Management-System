@@ -10,6 +10,8 @@ import com.jfoenix.controls.JFXTextField;
 import business.BOFactory;
 import business.BOType;
 import business.custom.ItemBO;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -49,7 +51,9 @@ public class ItemController {
     tblItem.getColumns().get(2).setCellValueFactory(new PropertyValueFactory<>("description"));
     tblItem.getColumns().get(3).setCellValueFactory(new PropertyValueFactory<>("qtyOnHand"));
     tblItem.getColumns().get(4).setCellValueFactory(new PropertyValueFactory<>("buyPrice"));
-    tblItem.getColumns().get(5).setCellValueFactory(new PropertyValueFactory<>("sellPrice"));
+    tblItem.getColumns().get(5).setCellValueFactory(new PropertyValueFactory<>("unitPrice"));
+
+    loadAllItems();
 
   }
 
@@ -60,6 +64,18 @@ public class ItemController {
   }
 
   public void btnDelete_OnAction(ActionEvent actionEvent) {
+  }
+
+  private void loadAllItems() {
+
+    ObservableList<ItemTM> items = tblItem.getItems();
+    items.clear();
+    try {
+      items = FXCollections.observableArrayList(itemBO.findAllItem());
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+    tblItem.setItems(items);
   }
 
   public void btnHome_OnAction(MouseEvent mouseEvent) throws IOException {

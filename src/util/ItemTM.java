@@ -7,19 +7,19 @@ public class ItemTM {
   private String description;
   private int qtyOnHand;
   private double buyPrice;
-  private double sellPrice;
+  private double unitPrice;
 
   public ItemTM() {
   }
 
   public ItemTM(String itemId, String categoryId, String description, int qtyOnHand, double buyPrice,
-      double sellPrice) {
+      double unitPrice) {
     this.itemId = itemId;
     this.categoryId = categoryId;
     this.description = description;
     this.qtyOnHand = qtyOnHand;
     this.buyPrice = buyPrice;
-    this.sellPrice = sellPrice;
+    this.setUnitPrice(unitPrice);
   }
 
   public String getItemId() {
@@ -63,11 +63,11 @@ public class ItemTM {
   }
 
   public double getUnitPrice() {
-    return sellPrice;
+    return unitPrice;
   }
 
   public void setUnitPrice(double unitPrice) {
-    this.sellPrice = sellPrice;
+    this.unitPrice = unitPrice;
   }
 
   @Override
@@ -78,7 +78,7 @@ public class ItemTM {
         ", description='" + description + '\'' +
         ", qtyOnHand=" + qtyOnHand +
         ", buyPrice=" + buyPrice +
-        ", unitPrice=" + sellPrice +
+        ", unitPrice=" + unitPrice +
         '}';
   }
 }
