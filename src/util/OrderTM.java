@@ -5,20 +5,20 @@ import java.sql.Date;
 public class OrderTM {
 
   private String orderId;
-  private String itemId;
-  private String description;
-  private int addedQty;
-  private double total;
+  private Date orderDate;
+  private String customerId;
+  private String customerName;
+  private double orderTotal;
 
   public OrderTM() {
   }
 
-  public OrderTM(String orderId, String itemId, String description, int addedQty, double total) {
+  public OrderTM(String orderId, Date orderDate, String customerId, String customerName, double orderTotal) {
     this.orderId = orderId;
-    this.itemId = itemId;
-    this.description = description;
-    this.addedQty = addedQty;
-    this.total = total;
+    this.orderDate = orderDate;
+    this.customerId = customerId;
+    this.customerName = customerName;
+    this.orderTotal = orderTotal;
   }
 
   public String getOrderId() {
@@ -29,46 +29,46 @@ public class OrderTM {
     this.orderId = orderId;
   }
 
-  public String getItemId() {
-    return itemId;
+  public Date getOrderDate() {
+    return orderDate;
   }
 
-  public void setItemId(String itemId) {
-    this.itemId = itemId;
+  public void setOrderDate(Date orderDate) {
+    this.orderDate = orderDate;
   }
 
-  public String getDescription() {
-    return description;
+  public String getCustomerId() {
+    return customerId;
   }
 
-  public void setDescription(String description) {
-    this.description = description;
+  public void setCustomerId(String customerId) {
+    this.customerId = customerId;
   }
 
-  public int getAddedQty() {
-    return addedQty;
+  public String getCustomerName() {
+    return customerName;
   }
 
-  public void setAddedQty(int addedQty) {
-    this.addedQty = addedQty;
+  public void setCustomerName(String customerName) {
+    this.customerName = customerName;
   }
 
-  public double getTotal() {
-    return total;
+  public double getOrderTotal() {
+    return orderTotal;
   }
 
-  public void setTotal(double total) {
-    this.total = total;
+  public void setOrderTotal(double orderTotal) {
+    this.orderTotal = orderTotal;
   }
 
   @Override
   public String toString() {
     return "OrderTM{" +
         "orderId='" + orderId + '\'' +
-        ", itemId='" + itemId + '\'' +
-        ", description='" + description + '\'' +
-        ", addedQty=" + addedQty +
-        ", total=" + total +
+        ", orderDate=" + orderDate +
+        ", customerId='" + customerId + '\'' +
+        ", customerName='" + customerName + '\'' +
+        ", orderTotal=" + orderTotal +
         '}';
   }
 }

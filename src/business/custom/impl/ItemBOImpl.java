@@ -1,12 +1,13 @@
 package business.custom.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import business.custom.ItemBO;
 import dao.DAOFactory;
 import dao.DAOType;
-import dao.custom.DeliveryDAO;
 import dao.custom.ItemDAO;
+import entity.Item;
 import util.ItemTM;
 
 public class ItemBOImpl implements ItemBO {
@@ -16,23 +17,28 @@ public class ItemBOImpl implements ItemBO {
   @Override
   public boolean saveItem(String itemId, String categoryId, String description, int qtyOnHand, double buyPrice,
       double unitPrice) throws Exception {
-    return false;
+    return itemDAO.save(new Item(itemId,categoryId,description,qtyOnHand,buyPrice,unitPrice));
   }
 
   @Override
   public boolean updateItem(String categoryId, String description, int qtyOnHand, double buyPrice, double unitPrice,
       String itemId) throws Exception {
-    return false;
+    return itemDAO.update(new Item(itemId,categoryId,description,qtyOnHand,buyPrice,unitPrice));
   }
 
   @Override
   public boolean deleteItem(String itemId) throws Exception {
-    return false;
+    return itemDAO.delete(itemId);
   }
 
   @Override
   public List<ItemTM> findAllItem() throws Exception {
-    return null;
+    List<Item> allItems = itemDAO.findAll();
+    List<ItemTM> items = new ArrayList<>();
+    for (Item item : allItems) {
+      items.add(new ItemTM(item.getItemID(), item.getCategoryId(), item.getDescription(), item.getQtyOnHand(), item.getBuyPrice(), item.getUnitPrice()));
+    }
+    return items;
   }
 
   @Override

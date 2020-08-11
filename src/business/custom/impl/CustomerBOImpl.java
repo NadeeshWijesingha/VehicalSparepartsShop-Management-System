@@ -1,11 +1,13 @@
 package business.custom.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import business.custom.CustomerBO;
 import dao.DAOFactory;
 import dao.DAOType;
 import dao.custom.CustomerDAO;
+import entity.Customer;
 import util.CustomerTM;
 
 public class CustomerBOImpl implements CustomerBO {
@@ -14,22 +16,27 @@ public class CustomerBOImpl implements CustomerBO {
 
   @Override
   public boolean saveCustomer(String id, String name, String contact) throws Exception {
-    return false;
+    return customerDAO.save(new Customer(id, name, contact));
   }
 
   @Override
   public boolean updateCustomer(String name, String contact, String id) throws Exception {
-    return false;
+    return customerDAO.update(new Customer(id, name, contact));
   }
 
   @Override
   public boolean deleteCustomer(String customerId) throws Exception {
-    return false;
+    return customerDAO.delete(customerId);
   }
 
   @Override
   public List<CustomerTM> findAllCustomer() throws Exception {
-    return null;
+    List<Customer> allCustomer = customerDAO.findAll();
+    List<CustomerTM> customerTMS = new ArrayList<>();
+    for (Customer customer : allCustomer) {
+      customerTMS.add(new CustomerTM(customer.getCustomerId(), customer.getName(), customer.getContact()));
+    }
+    return customerTMS;
   }
 
   @Override
