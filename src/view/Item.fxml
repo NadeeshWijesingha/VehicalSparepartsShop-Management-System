@@ -45,7 +45,7 @@
       <JFXTextField fx:id="txtSell" labelFloat="true" layoutX="564.0" layoutY="235.0" prefHeight="31.0" prefWidth="219.0" promptText="Sell" />
       <JFXButton layoutX="667.0" layoutY="17.0" onAction="#btnNew_OnAction" style="-fx-background-color: #5DFF41;" text="New" />
       <JFXButton fx:id="btnSave" layoutX="34.0" layoutY="285.0" onAction="#btnSave_OnAction" prefHeight="31.0" prefWidth="141.0" style="-fx-background-color: #5D63FC;" text="Save" />
-      <JFXButton layoutX="643.0" layoutY="292.0" onAction="#btnDelete_OnAction" prefHeight="31.0" prefWidth="141.0" style="-fx-background-color: #FF2727;" text="Delete" />
+      <JFXButton fx:id="btnDelete" layoutX="643.0" layoutY="292.0" onAction="#btnDelete_OnAction" prefHeight="31.0" prefWidth="141.0" style="-fx-background-color: #FF2727;" text="Delete" />
       <JFXComboBox fx:id="comboCategory" labelFloat="true" layoutX="499.0" layoutY="75.0" prefHeight="28.0" prefWidth="287.0" promptText="Category" />
    </children>
 </AnchorPane>

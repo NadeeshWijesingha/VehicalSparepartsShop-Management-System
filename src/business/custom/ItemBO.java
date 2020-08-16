@@ -3,6 +3,7 @@ package business.custom;
 import java.util.List;
 
 import business.SuperBO;
+import entity.Category;
 import util.ItemTM;
 
 public interface ItemBO extends SuperBO {
@@ -16,5 +17,7 @@ public interface ItemBO extends SuperBO {
   List <ItemTM> findAllItem() throws Exception;
 
   String getNewItemId() throws Exception;
+
+  public List<Category> getCategories()throws Exception;
 
 }

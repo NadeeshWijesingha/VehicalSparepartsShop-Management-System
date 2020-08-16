@@ -6,24 +6,27 @@ import java.util.List;
 import business.custom.ItemBO;
 import dao.DAOFactory;
 import dao.DAOType;
+import dao.custom.CategoryDAO;
 import dao.custom.ItemDAO;
+import entity.Category;
 import entity.Item;
 import util.ItemTM;
 
 public class ItemBOImpl implements ItemBO {
 
   ItemDAO itemDAO = DAOFactory.getInstance().getDAO(DAOType.ITEM);
+  CategoryDAO categoryDAO = DAOFactory.getInstance().getDAO(DAOType.CATEGORY);
 
   @Override
   public boolean saveItem(String itemId, String categoryId, String description, int qtyOnHand, double buyPrice,
       double unitPrice) throws Exception {
-    return itemDAO.save(new Item(itemId,categoryId,description,qtyOnHand,buyPrice,unitPrice));
+    return itemDAO.save(new Item(itemId, categoryId, description, qtyOnHand, buyPrice, unitPrice));
   }
 
   @Override
   public boolean updateItem(String categoryId, String description, int qtyOnHand, double buyPrice, double unitPrice,
       String itemId) throws Exception {
-    return itemDAO.update(new Item(itemId,categoryId,description,qtyOnHand,buyPrice,unitPrice));
+    return itemDAO.update(new Item(itemId, categoryId, description, qtyOnHand, buyPrice, unitPrice));
   }
 
   @Override
@@ -36,7 +39,8 @@ public class ItemBOImpl implements ItemBO {
     List<Item> allItems = itemDAO.findAll();
     List<ItemTM> items = new ArrayList<>();
     for (Item item : allItems) {
-      items.add(new ItemTM(item.getItemID(), item.getCategoryId(), item.getDescription(), item.getQtyOnHand(), item.getBuyPrice(), item.getUnitPrice()));
+      items.add(new ItemTM(item.getItemID(), item.getCategoryId(), item.getDescription(), item.getQtyOnHand(),
+          item.getBuyPrice(), item.getUnitPrice()));
     }
     return items;
   }
@@ -64,5 +68,16 @@ public class ItemBOImpl implements ItemBO {
       }
       return id;
     }
+  }
+
+  @Override
+  public List<Category> getCategories() throws Exception {
+    List<Category> categoryList = new ArrayList<>();
+    List<Category> cat = categoryDAO.findAll();
+
+    for (Category category : cat) {
+      categoryList.add(new Category(category.getCategoryId(), category.getDescription()));
+    }
+    return categoryList;
   }
 }

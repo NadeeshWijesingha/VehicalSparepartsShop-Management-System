@@ -1,17 +1,25 @@
 package dao.custom.impl;
 
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import dao.CrudUtil;
 import dao.custom.CategoryDAO;
 import entity.Category;
+import entity.Customer;
 
 public class CategoryDAOImpl implements CategoryDAO {
 
   @Override
-  public List<Category> findAll() {
-    return null;
+  public List<Category> findAll() throws SQLException {
+    ResultSet rst = CrudUtil.execute("SELECT * FROM Category");
+    List<Category> categories = new ArrayList<>();
+    while (rst.next()){
+      categories.add(new Category(rst.getString(1),rst.getString(2)));
+    }
+    return categories;
   }
 
   @Override
