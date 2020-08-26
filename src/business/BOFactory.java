@@ -1,11 +1,10 @@
 package business;
 
+import business.custom.impl.CategoryBoImpl;
 import business.custom.impl.CustomerBOImpl;
 import business.custom.impl.DeliveryBOImpl;
 import business.custom.impl.ItemBOImpl;
 import business.custom.impl.OrdersBOImpl;
-import dao.custom.impl.DeliveryDAOImpl;
-import dao.custom.impl.OrdersDAOImpl;
 
 public class BOFactory {
 
@@ -22,6 +21,8 @@ public class BOFactory {
     switch (boType) {
       case CUSTOMER:
         return (T) new CustomerBOImpl();
+      case CATEGORY:
+        return (T) new CategoryBoImpl();
       case ITEM:
         return (T) new ItemBOImpl();
       case DELIVERY:

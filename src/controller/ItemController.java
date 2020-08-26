@@ -2,6 +2,7 @@ package controller;
 
 import java.io.IOException;
 import java.net.URL;
+import java.text.DecimalFormat;
 import java.util.List;
 
 import com.jfoenix.controls.JFXButton;
@@ -10,6 +11,7 @@ import com.jfoenix.controls.JFXTextField;
 
 import business.BOFactory;
 import business.BOType;
+import business.custom.CategoryBO;
 import business.custom.ItemBO;
 import entity.Category;
 import javafx.beans.value.ChangeListener;
@@ -30,8 +32,9 @@ import util.ItemTM;
 
 public class ItemController {
 
+  private static final DecimalFormat df = new DecimalFormat("#.##");
   public AnchorPane root;
-  public TableView <ItemTM> tblItem;
+  public TableView<ItemTM> tblItem;
   public TableColumn clmId;
   public TableColumn clmCategory;
   public TableColumn clmDescription;
@@ -44,13 +47,15 @@ public class ItemController {
   public JFXTextField txtBuy;
   public JFXTextField txtSell;
   public JFXButton btnSave;
-  public JFXComboBox <String> comboCategory;
-  List<Category> categories;
+  public JFXComboBox<String> comboCategory;
   public JFXButton btnDelete;
+  List<Category> categories;
 
+  //dependency injection
   ItemBO itemBO = BOFactory.getInstance().getBO(BOType.ITEM);
+  CategoryBO categoryBO = BOFactory.getInstance().getBO(BOType.CATEGORY);
 
-  public void initialize(){
+  public void initialize() {
 
     tblItem.getColumns().get(0).setCellValueFactory(new PropertyValueFactory<>("itemId"));
     tblItem.getColumns().get(1).setCellValueFactory(new PropertyValueFactory<>("categoryId"));
@@ -62,6 +67,7 @@ public class ItemController {
     txtId.setDisable(true);
     txtDescription.setDisable(true);
     txtQtyOnHand.setDisable(true);
+    txtBuy.setDisable(true);
     txtSell.setDisable(true);
     comboCategory.setDisable(true);
     btnDelete.setDisable(true);
@@ -70,7 +76,6 @@ public class ItemController {
     loadAllItems();
 
     //loadCategory's
-
     try {
       ObservableList<String> cat = comboCategory.getItems();
       categories = itemBO.getCategories();
@@ -85,41 +90,116 @@ public class ItemController {
       @Override
       public void changed(ObservableValue<? extends ItemTM> observable, ItemTM oldValue, ItemTM newValue) {
 
-        ItemTM selectedItem = tblItem.getSelectionModel().getSelectedItem();
+        try {
+          ItemTM selectedItem = tblItem.getSelectionModel().getSelectedItem();
 
-        if (selectedItem == null) {
-          btnSave.setText("Save");
-          btnDelete.setDisable(true);
-          txtId.clear();
-          txtDescription.clear();
-          txtQtyOnHand.clear();
-          txtSell.clear();
-          txtBuy.clear();
+          txtId.setDisable(false);
+          txtId.setText(selectedItem.getItemId());
+          txtDescription.setDisable(false);
+          txtDescription.setText(selectedItem.getDescription());
+          txtQtyOnHand.setDisable(false);
+          txtQtyOnHand.setText(String.valueOf(selectedItem.getQtyOnHand()));
+          txtBuy.setDisable(false);
+          txtBuy.setText(String.valueOf(df.format(selectedItem.getBuyPrice())));
+          txtSell.setDisable(false);
+          txtSell.setText(String.valueOf(df.format(selectedItem.getUnitPrice())));
+          comboCategory.setDisable(false);
+          ObservableList<String> cmb = comboCategory.getItems();
+          System.out.println(selectedItem.getCategoryId());
+          String catId = null;
+          for (Category category : categories) {
+            if (selectedItem.getCategoryId().equals(category.getCategoryId())) {
+              comboCategory.getSelectionModel().select(category.getDescription());
+            }
+          }
+          btnSave.setText("Update");
+          btnSave.setDisable(false);
+
+        } catch (Exception e) {
           return;
         }
-
-        btnSave.setText("Update");
-        btnSave.setDisable(false);
-        btnDelete.setDisable(false);
-        txtDescription.setDisable(false);
-        txtQtyOnHand.setDisable(false);
-        txtSell.setDisable(false);
-        txtBuy.setDisable(false);
-        txtId.setText(selectedItem.getItemId());
-        txtDescription.setText(selectedItem.getDescription());
-        txtQtyOnHand.setText(selectedItem.getQtyOnHand() + "");
-        txtSell.setText(selectedItem.getUnitPrice() + "");
-        txtBuy.setText(selectedItem.getBuyPrice() + "");
-
       }
     });
-
   }
 
+
   public void btnNew_OnAction(ActionEvent actionEvent) {
+
+    btnSave.setDisable(false);
+    txtId.setDisable(false);
+    txtDescription.setDisable(false);
+    txtQtyOnHand.setDisable(false);
+    txtBuy.setDisable(false);
+    txtSell.setDisable(false);
+    comboCategory.setDisable(false);
+    txtId.clear();
+    comboCategory.setValue(null);
+    txtDescription.clear();
+    txtQtyOnHand.clear();
+    txtBuy.clear();
+    txtSell.clear();
+    btnSave.setText("Save");
+
+    try {
+      txtId.setText(itemBO.getNewItemId());
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+
+
   }
 
   public void btnSave_OnAction(ActionEvent actionEvent) {
+
+    String id = txtId.getText();
+    String description = txtDescription.getText();
+    String qty = txtQtyOnHand.getText();
+    String buy = txtBuy.getText();
+    String sell = txtSell.getText();
+
+    String categoryId = null;
+
+    if (btnSave.getText().equals("Save")) {
+
+      try {
+
+        for (Category category : categories) {
+          if (comboCategory.getSelectionModel().getSelectedItem().equals(category.getDescription())) {
+            categoryId = category.getCategoryId();
+          }
+        }
+
+        itemBO.saveItem(id, categoryId, description, Integer.parseInt(qty), Double.parseDouble(buy), Double.parseDouble(sell));
+
+        tblItem.refresh();
+        btnNew_OnAction(actionEvent);
+      } catch (Exception e) {
+        e.printStackTrace();
+      }
+
+    } else {
+
+      ItemTM selectedItem = tblItem.getSelectionModel().getSelectedItem();
+      boolean result = false;
+      try {
+
+        for (Category category : categories) {
+          if (comboCategory.getSelectionModel().getSelectedItem().equals(category.getDescription())) {
+            categoryId = category.getCategoryId();
+          }
+        }
+
+        result = itemBO.updateItem(categoryId, description, Integer.parseInt(qty), Double.parseDouble(buy), Double.parseDouble(sell), selectedItem.getItemId());
+
+        tblItem.refresh();
+        btnNew_OnAction(actionEvent);
+
+      } catch (Exception e) {
+        e.printStackTrace();
+      }
+
+    }
+
   }
 
   public void btnDelete_OnAction(ActionEvent actionEvent) {
