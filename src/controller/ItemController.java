@@ -53,7 +53,7 @@ public class ItemController {
 
   //dependency injection
   ItemBO itemBO = BOFactory.getInstance().getBO(BOType.ITEM);
-  CategoryBO categoryBO = BOFactory.getInstance().getBO(BOType.CATEGORY);
+//  CategoryBO categoryBO = BOFactory.getInstance().getBO(BOType.CATEGORY);
 
   public void initialize() {
 
@@ -114,6 +114,7 @@ public class ItemController {
           }
           btnSave.setText("Update");
           btnSave.setDisable(false);
+          btnDelete.setDisable(false);
 
         } catch (Exception e) {
           return;
@@ -121,7 +122,6 @@ public class ItemController {
       }
     });
   }
-
 
   public void btnNew_OnAction(ActionEvent actionEvent) {
 
@@ -171,7 +171,7 @@ public class ItemController {
 
         itemBO.saveItem(id, categoryId, description, Integer.parseInt(qty), Double.parseDouble(buy), Double.parseDouble(sell));
 
-        tblItem.refresh();
+        initialize();
         btnNew_OnAction(actionEvent);
       } catch (Exception e) {
         e.printStackTrace();
@@ -191,7 +191,7 @@ public class ItemController {
 
         result = itemBO.updateItem(categoryId, description, Integer.parseInt(qty), Double.parseDouble(buy), Double.parseDouble(sell), selectedItem.getItemId());
 
-        tblItem.refresh();
+        initialize();
         btnNew_OnAction(actionEvent);
 
       } catch (Exception e) {
@@ -203,6 +203,19 @@ public class ItemController {
   }
 
   public void btnDelete_OnAction(ActionEvent actionEvent) {
+
+    ItemTM selectedItem = tblItem.getSelectionModel().getSelectedItem();
+
+    try {
+      itemBO.deleteItem(selectedItem.getItemId());
+      tblItem.getItems().clear();
+      comboCategory.getItems().clear();
+      initialize();
+      btnNew_OnAction(actionEvent);
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+
   }
 
   private void loadAllItems() {
