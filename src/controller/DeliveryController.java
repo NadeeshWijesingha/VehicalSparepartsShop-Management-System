@@ -162,6 +162,22 @@ public class DeliveryController {
     }
 
     public void btnDelete_OnAction(ActionEvent actionEvent) {
+
+        DeliveryTM selectedItem = tblDelivery.getSelectionModel().getSelectedItem();
+        try {
+            boolean result= deliveryBO.deleteDelivery(selectedItem.getDeliveryId(),selectedItem.getOrderId());
+            if(!result){
+                throw new RuntimeException();
+            }
+            tblDelivery.getItems().clear();
+            comboOrderId.getItems().clear();
+            comboStatus.getItems().clear();
+            initialize();
+            new Alert(Alert.AlertType.INFORMATION,"Record successfully deleted!").show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
 
     public void btnNew_OnAction(ActionEvent actionEvent) {

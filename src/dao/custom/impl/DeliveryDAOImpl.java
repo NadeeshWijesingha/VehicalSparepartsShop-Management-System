@@ -55,6 +55,6 @@ public class DeliveryDAOImpl implements DeliveryDAO {
 
   @Override
   public boolean delete(DeliveryPK key) throws SQLException {
-    return CrudUtil.execute("DELETE FROM Delivery WHERE deliveryId = ?", key);
+    return CrudUtil.execute("DELETE FROM delivery WHERE deliveryId=? AND orderId=?", key.getDeliveryId(),key.getOrderId());
   }
 }
