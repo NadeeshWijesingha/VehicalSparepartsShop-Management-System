@@ -28,7 +28,6 @@
             <Font name="Arial Bold" size="30.0" />
          </font>
       </Label>
-      <JFXButton layoutX="646.0" layoutY="19.0" onAction="#btnNew_OnAction" style="-fx-background-color: #5DFF41;" text="New" />
       <TableView fx:id="tblOrder" layoutX="14.0" layoutY="314.0" prefHeight="272.0" prefWidth="654.0">
         <columns>
           <TableColumn fx:id="clmOrderId" prefWidth="75.0" text="Order Id" />
